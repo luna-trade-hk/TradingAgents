@@ -25,6 +25,10 @@ from tradingagents.default_config import DEFAULT_CONFIG
 from cli.models import AnalystType
 from cli.utils import *
 
+from dotenv import load_dotenv
+
+load_dotenv("E:/venvs/trading_agents/.env")
+
 console = Console()
 
 app = typer.Typer(
@@ -737,12 +741,12 @@ def run_analysis():
 
     # Create config with selected research depth
     config = DEFAULT_CONFIG.copy()
-    config["max_debate_rounds"] = selections["research_depth"]
-    config["max_risk_discuss_rounds"] = selections["research_depth"]
-    config["quick_think_llm"] = selections["shallow_thinker"]
-    config["deep_think_llm"] = selections["deep_thinker"]
-    config["backend_url"] = selections["backend_url"]
-    config["llm_provider"] = selections["llm_provider"].lower()
+    config["max_debate_rounds"] = config["max_debate_rounds"] or selections["research_depth"]
+    config["max_risk_discuss_rounds"] = config["max_risk_discuss_rounds"] or selections["research_depth"]
+    config["quick_think_llm"] = config["quick_think_llm"] or selections["shallow_thinker"]
+    config["deep_think_llm"] = config["deep_think_llm"] or selections["deep_thinker"]
+    config["backend_url"] = config["backend_url"] or selections["backend_url"]
+    config["llm_provider"] = config["llm_provider"] or selections["llm_provider"].lower()
 
     # Initialize the graph
     graph = TradingAgentsGraph(

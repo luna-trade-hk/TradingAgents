@@ -145,13 +145,19 @@ def select_shallow_thinking_agent(provider) -> str:
             ("Gemini 2.5 Flash - Adaptive thinking, cost efficiency", "gemini-2.5-flash-preview-05-20"),
         ],
         "openrouter": [
-            ("Meta: Llama 4 Scout", "meta-llama/llama-4-scout:free"),
-            ("Meta: Llama 3.3 8B Instruct - A lightweight and ultra-fast variant of Llama 3.3 70B", "meta-llama/llama-3.3-8b-instruct:free"),
-            ("google/gemini-2.0-flash-exp:free - Gemini Flash 2.0 offers a significantly faster time to first token", "google/gemini-2.0-flash-exp:free"),
+            # ("Meta: Llama 4 Scout", "meta-llama/llama-4-scout:free"),
+            # ("Meta: Llama 3.3 8B Instruct - A lightweight and ultra-fast variant of Llama 3.3 70B", "meta-llama/llama-3.3-8b-instruct:free"),
+            # ("google/gemini-2.0-flash-exp:free - Gemini Flash 2.0 offers a significantly faster time to first token", "google/gemini-2.0-flash-exp:free"),
+            ("Deepseek V3 0324 (free)", "deepseek/deepseek-chat-v3-0324:free"),
+            ("Qwen3 32B (free)", "qwen/qwen3-32b:free"),
         ],
         "ollama": [
             ("llama3.1 local", "llama3.1"),
             ("llama3.2 local", "llama3.2"),
+        ],
+        "lm studio": [
+            ("Qwen3 8B", "qwen_qwen3-8b"),
+            ("Config", None),
         ]
     }
 
@@ -208,12 +214,18 @@ def select_deep_thinking_agent(provider) -> str:
             ("Gemini 2.5 Pro", "gemini-2.5-pro-preview-06-05"),
         ],
         "openrouter": [
-            ("DeepSeek V3 - a 685B-parameter, mixture-of-experts model", "deepseek/deepseek-chat-v3-0324:free"),
-            ("Deepseek - latest iteration of the flagship chat model family from the DeepSeek team.", "deepseek/deepseek-chat-v3-0324:free"),
+            # ("DeepSeek V3 - a 685B-parameter, mixture-of-experts model", "deepseek/deepseek-chat-v3-0324:free"),
+            # ("Deepseek - latest iteration of the flagship chat model family from the DeepSeek team.", "deepseek/deepseek-chat-v3-0324:free"),
+            ("Deepseek R1 0528 (free)", "deepseek/deepseek-r1-0528:free"),
+            ("Deepseek R1 0528 Qwen3 8B (free)", "deepseek/deepseek-r1-0528-qwen3-8b:free"),
         ],
         "ollama": [
             ("llama3.1 local", "llama3.1"),
             ("qwen3", "qwen3"),
+        ],
+        "lm studio": [
+            ("DeepSeek R1 0528 Qwen3 8B", "deepseek/deepseek-r1-0528-qwen3-8b"),
+            ("Config", None),
         ]
     }
     
@@ -248,6 +260,7 @@ def select_llm_provider() -> tuple[str, str]:
         ("Google", "https://generativelanguage.googleapis.com/v1"),
         ("Openrouter", "https://openrouter.ai/api/v1"),
         ("Ollama", "http://localhost:11434/v1"),        
+        ("LM Studio", "http://localhost:1234/v1"),        
     ]
     
     choice = questionary.select(
